@@ -47,7 +47,7 @@ def get_months():
 
 def company_rating(company, month):
     """
-
+    This method is used to calculate the company rating per month
     :param company:
     :param month:
     :return:
@@ -71,9 +71,9 @@ def company_rating(company, month):
 
 def company_ratings_per_months(month):
     """
-
+    This method is used to calculate the rating of all companies per month
     :param month:
-    :return:
+    :return: List of company ratings
     """
     try:
         list_crt = []
@@ -89,7 +89,7 @@ def company_ratings_per_months(month):
 
 def crs(company, month):
     """
-
+    This method calculate the CRS of company per month
     :return:
     """
     try:
@@ -107,7 +107,7 @@ def crs(company, month):
 
 def cdf(x, mu, sigma):
     """
-
+     This method is used to calculate the CDF.
     :param x:
     :param mu:
     :param sigma:
@@ -123,7 +123,7 @@ def cdf(x, mu, sigma):
 
 def crs_data(company):
     """
-
+    This method calculate the CRS data of company for all months
     :param month:
     :return:
     """
