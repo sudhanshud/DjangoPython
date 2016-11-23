@@ -1,0 +1,85 @@
+{% extends "base_template.html" %}
+{% block head %}
+<head>
+    <title>Company Relative Score</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{STATIC_URL}}/static/media/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}/static/media/css/cmxform.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{STATIC_URL}}/static/media/css/custom.css"/>
+    <link rel="stylesheet" href="{{STATIC_URL}}/static/media/css/smoke.css"/>
+    <script src="{{STATIC_URL}}/static/media/js/jquery-1.12.0.min.js"></script>
+    <script src="{{STATIC_URL}}/static/media/js/bootstrap.min.js"></script>
+    <script src="{{STATIC_URL}}/static/media/js/jquery.validate.min.js"></script>
+    <script src="{{STATIC_URL}}/static/media/js/bootbox.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+          $('#btnSubmit').click(function(){
+
+            $("#data").validate({
+                      rules: {
+                            title: "required",
+                            msg_body: "required",
+                            product_id: "required",
+                            test_user_mails: {
+                               required: true,
+                               email: true
+                            }
+                        },
+                      messages: {
+                            title: "Please enter title",
+                            msg_body: "Please enter message",
+                            product_id: "Please enter product id",
+                            test_user_mails: "Please enter a valid email address"
+                         },
+                       submitHandler: function(form) {
+                                 $('#wait').show();
+                                 form.submit();
+                        }
+            }); });
+
+           $('input[name=file_up]').change(function(){
+           var data = new FormData();
+           data.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+           data.append('file',$('#id_file_up')[0].files[0]);
+           $.ajax({
+                 type: 'POST',
+                 url: 'geturl/',
+                 beforeSend: function() { $('#wait').show(); },
+                 data: data,
+                 processData: false,
+                 contentType: false,
+                 success : function(json) {
+                 $('[id$=id_imgurl]').val(json);
+                 $('#wait').hide();
+                 }
+            })
+          });
+        });
+    </script>
+</head>
+{% endblock %}
+{% block content %}
+    <h1>Company Relative Score</h1>
+    <form id="data" enctype="multipart/form-data" action="" method="post" novalidate="novalidate">
+        <div class="form-group row">
+        <label for="{{ form.title.id_for_label }}" class="col-sm-2 form-control-label">Company:</label>
+            <div class="col-sm-8">
+            {{ form.Company_name }}
+           </div>
+        </div>
+        <div class="form-group row">
+        <label for="{{ form.msg_body.id_for_label }}" class="col-sm-2 form-control-label">Month:</label>
+            <div class="col-sm-8">
+            {{ form.Month }}
+           </div>
+        </div>
+        {% csrf_token %}
+        <div class="form-group row">
+        <div class="col-sm-offset-2 col-sm-8">
+           <input type="submit"  id="btnSubmit" name="submit" value="CRS" class="btn btn-success btn-info pull-left">
+        </div>
+       </div>
+    </form>
+{% endblock %}

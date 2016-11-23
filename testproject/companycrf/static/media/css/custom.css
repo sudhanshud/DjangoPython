@@ -1,0 +1,67 @@
+/*! Mobikwik Internal CSS */
+
+.load {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url(/static/media/images/Preloader_3.gif)
+                50% 50% 
+                no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+    display: block;
+}
+
+
+.cuserror{
+	display: none;
+	margin-left: 10px;
+}		
+
+.cuserror_show{
+	color: red;
+	margin-left: 10px;
+	font-weight: bold;
+}
+
+input.invalid, textarea.invalid{
+	border: 2px solid red;
+}
+
+input.valid, textarea.valid{
+	border: 2px solid green;
+}
+
+.rounded {
+  border-radius: 10px;
+  background: #e6e6e6;
+}
+
+#footer {
+   clear: both;
+   position: relative;
+   z-index: 10;
+   height: 2.5em;
+   margin-top: 110px;
+   background-color: #337ab7;
+   color: white;
+   font-size: 150%;
+   text-align: center;
+   line-height: 3em;
+   //border-radius: 5px;
+}
+

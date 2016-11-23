@@ -1,0 +1,12 @@
+Django==1.9
+django-classy-tags==0.8.0
+django-cms==3.2.5
+django-contrib-comments==1.7.2
+django-formtools==1.0
+django-sekizai==0.10.0
+django-treebeard==4.0.1
+djangocms-admin-style==1.2.5
+xlrd==1.0.0
+virtualenv==15.0.3
+mysql-python
+numpy

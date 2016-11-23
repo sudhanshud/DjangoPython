@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block head %}
+<head>
+    <title>Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{STATIC_URL}}/static/media/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{STATIC_URL}}/static/media/css/custom.css"/>
+    <script src="{{STATIC_URL}}/static/media/js/bootbox.min.js"></script>
+</head>
+{% endblock %}
+<body>
+<div class="container">
+    <h1 style="text-align: center">Company CRS </h1>
+    <div class="hr"><hr /></div>
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>
